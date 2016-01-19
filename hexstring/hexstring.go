@@ -50,14 +50,19 @@ func ScoreEnglish(b [][]byte) (score, key int) {
 
 		for _, j := range i {
 
+			if j < byte('\x40') || j > byte('\x7A') {
+
+				x = -10
+
+			}
 			if j == byte('\x20') {
 
-				x += 13
+				x += 20
 			}
 
 			if j == byte('\x45') || j == byte('\x65') {
 
-				x += 12
+				x += 10
 
 			}
 
@@ -100,6 +105,7 @@ func ScoreEnglish(b [][]byte) (score, key int) {
 			if x > score {
 				score = x
 				key = y
+
 			}
 
 		}

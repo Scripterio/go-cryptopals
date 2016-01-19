@@ -1,5 +1,9 @@
 package bitwise
 
+import (
+	"math"
+)
+
 //XOR takes two equal length bytes arrays and XORS them
 
 func XOR(b []byte, c []byte) []byte {
@@ -54,4 +58,72 @@ func RXOR(b []byte, c []byte) []byte {
 	}
 
 	return (o)
+}
+
+func HAM(b []byte, c []byte) int {
+
+	n := len(b)
+	var j int
+	var o byte
+
+	j = 0
+
+	for i := 0; i < n; i++ {
+
+		o = b[i] ^ c[i]
+
+		j += COUNTBITS(o)
+
+	}
+
+	return (j)
+
+}
+
+func COUNTBITS(b byte) int {
+
+	var j int
+
+	j = 0
+
+	if b >= 128 {
+		b = byte(math.Mod(float64(b), 128))
+		j++
+	}
+
+	if b >= 64 {
+		b = byte(math.Mod(float64(b), 64))
+		j++
+	}
+
+	if b >= 32 {
+		b = byte(math.Mod(float64(b), 32))
+		j++
+	}
+
+	if b >= 16 {
+		b = byte(math.Mod(float64(b), 16))
+		j++
+	}
+
+	if b >= 8 {
+		b = byte(math.Mod(float64(b), 8))
+		j++
+	}
+
+	if b >= 4 {
+		b = byte(math.Mod(float64(b), 4))
+		j++
+	}
+
+	if b >= 2 {
+		b = byte(math.Mod(float64(b), 2))
+		j++
+	}
+
+	if b >= 1 {
+		b = byte(math.Mod(float64(b), 1))
+		j++
+	}
+	return j
 }

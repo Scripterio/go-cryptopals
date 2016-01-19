@@ -9,3 +9,11 @@ func Encode(b []byte) string {
 
 	return string(sEnc)
 }
+
+func Decode(s string) []byte {
+
+	//uEnc:= []byte(b64.StdEncoding.DecodeString(s))
+	sDec, _ := b64.StdEncoding.DecodeString(s)
+
+	return sDec
+}
